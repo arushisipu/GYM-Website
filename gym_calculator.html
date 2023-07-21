@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gym Calculator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Gym Calculator</h1>
+
+  <div class="calculator">
+    <label for="weight">Weight Lifted(in kg):</label>
+    <input type="number" id="weight" min="0" step="any">
+
+    <label for="reps">Reps:</label>
+    <input type="number" id="reps" min="0">
+
+    <button class="but1" onclick="calculateOneRepMax()">Calculate</button>
+    <p id="result"></p>
+  </div>
+  <button class="butt"><a href="gym.html">Back</a></button>
+  <script>
+    function calculateOneRepMax() {
+  var weight = parseFloat(document.getElementById('weight').value);
+  var reps = parseInt(document.getElementById('reps').value);
+
+  if (isNaN(weight) || isNaN(reps) || weight <= 0 || reps <= 0) {
+    document.getElementById('result').innerHTML = "Please enter valid weight and reps.";
+  } else {
+    var oneRepMax = weight * (1 + reps / 30);
+    document.getElementById('result').innerHTML = "Estimated One Rep Max: " + oneRepMax.toFixed(2) + " kg";
+  }
+}
+
+  </script>
+</body>
+</html>
